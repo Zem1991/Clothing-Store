@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private Inputs inputs;
+    [SerializeField] private int money = 100;
 
     [Header("Runtime")]
     [SerializeField] private PlayerCharacter playerCharacter;

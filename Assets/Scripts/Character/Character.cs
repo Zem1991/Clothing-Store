@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
     [Header("CharacterComponents")]
     [SerializeField] protected CharacterMovement movement;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         movement = new(this, rigidbody2D);

@@ -8,7 +8,7 @@ public class CharacterMovement : CharacterComponent
     protected Rigidbody2D rigidbody2D;
 
     [Header("Settings")]
-    [SerializeField] public float moveSpeed = 10F;
+    [SerializeField] private float moveSpeed = 10F;
 
     public CharacterMovement(Character character, Rigidbody2D rigidbody2D) : base(character)
     {
