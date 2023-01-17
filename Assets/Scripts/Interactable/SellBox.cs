@@ -6,7 +6,7 @@ public class SellBox : MonoBehaviour, Interactable
 {
     public string GetInteractionText()
     {
-        throw new System.NotImplementedException();
+        return "Sell your Items";
     }
 
     public Vector3 GetInteractionPosition()

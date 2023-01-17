@@ -6,7 +6,7 @@ public class Shopkeeper : MonoBehaviour, Interactable
 {
     public string GetInteractionText()
     {
-        throw new System.NotImplementedException();
+        return "Talk to Shopkeeper";
     }
 
     public Vector3 GetInteractionPosition()

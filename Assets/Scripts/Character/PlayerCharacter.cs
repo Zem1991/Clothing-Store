@@ -13,5 +13,6 @@ public class PlayerCharacter : Character
         inventory = new(this);
     }
 
-    public bool Add(Item item) => inventory.Add(item);
+    public Inventory GetInventory() => inventory.GetInventory();
+    //public bool Add(Item item) => inventory.Add(item);
 }

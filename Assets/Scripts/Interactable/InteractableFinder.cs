@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class InteractableFinder
 {
-    public Interactable OverlapSphere(Vector3 position, float radius)
+    public Interactable OverlapSphere(Vector3 position)
     {
+        float radius = Constants.interactableFindRadius;
         int mask = Constants.interactableMask.value;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(position, radius, mask);
         //Collider[] colliders = Physics.OverlapSphere(position, radius, mask, QueryTriggerInteraction.Collide);

@@ -29,4 +29,14 @@ public class Inputs
     {
         return Input.GetKeyDown(interact);
     }
+
+    public bool InventoryDown()
+    {
+        return Input.GetKeyDown(inventory);
+    }
+
+    public bool CancelDown()
+    {
+        return Input.GetKeyDown(cancel);
+    }
 }

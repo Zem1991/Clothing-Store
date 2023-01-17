@@ -9,6 +9,9 @@ public class UI : MonoBehaviour
     [SerializeField] private InventoryUI inventory;
     [SerializeField] private DialogueUI dialogue;
 
+    [Header("Runtime")]
+    [SerializeField] private bool inventoryStatus;
+
     private void Awake()
     {
         hud = GetComponentInChildren<HUD>();
@@ -26,6 +29,17 @@ public class UI : MonoBehaviour
     public void Refresh(Player player)
     {
         hud.Refresh(player);
-        //PlayerCharacter playerCharacter = player.PlayerCharacter;
+        inventory.Refresh(inventoryStatus ? player.PlayerCharacter.GetInventory() : null);
+        dialogue.Refresh(player);
+    }
+
+    public void ToggleInventory()
+    {
+        inventoryStatus = !inventoryStatus;
+    }
+
+    public void Cancel()
+    {
+        inventoryStatus = false;
     }
 }

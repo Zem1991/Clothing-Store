@@ -19,9 +19,8 @@ public class InteractablePicker
     public void Pick()
     {
         Vector3 findPos = playerCharacter.transform.position;
-        float radius = 2F;
         InteractableFinder finder = new();
-        target = finder.OverlapSphere(findPos, radius);
+        target = finder.OverlapSphere(findPos);
         if (target != null) position = target.GetInteractionPosition();
     }
 }

@@ -12,6 +12,6 @@ public class DialogueUI : GenericUI<Player>
             return;
         }
 
-        throw new System.NotImplementedException();
+        Hide();
     }
 }

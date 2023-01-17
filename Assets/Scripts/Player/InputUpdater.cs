@@ -27,14 +27,14 @@ public class InputUpdater
     
     public void Update()
     {
-        PlayerCharacter playerCharacter = player.PlayerCharacter;
-        InteractablePicker interactablePicker = new(playerCharacter);
-        interactablePicker.Pick();
-
-        Interactable interactable = interactablePicker.target;
-        if (interactable == null) return;
-
+        Interactable interactable = player.InteractablePicker.target;
         bool interact = player.Inputs.InteractDown();
-        if (interact) interactable.Interact(playerCharacter);
+        if (interactable != null && interact) interactable.Interact(player.PlayerCharacter);
+
+        bool inventory = player.Inputs.InventoryDown();
+        if (inventory) player.UI.ToggleInventory();
+
+        bool cancel = player.Inputs.CancelDown();
+        if (cancel) player.UI.Cancel();
     }
 }

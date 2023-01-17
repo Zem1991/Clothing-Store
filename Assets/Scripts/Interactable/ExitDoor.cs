@@ -6,7 +6,7 @@ public class ExitDoor : MonoBehaviour, Interactable
 {
     public string GetInteractionText()
     {
-        throw new System.NotImplementedException();
+        return "Exit Game";
     }
 
     public Vector3 GetInteractionPosition()
@@ -16,6 +16,7 @@ public class ExitDoor : MonoBehaviour, Interactable
 
     public bool Interact(PlayerCharacter playerCharacter)
     {
-        throw new System.NotImplementedException();
+        new ExitGameHandler().Handle();
+        return true;
     }
 }

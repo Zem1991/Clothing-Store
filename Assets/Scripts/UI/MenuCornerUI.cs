@@ -11,6 +11,6 @@ public class MenuCornerUI : GenericUI<Player>
 
     public void ExitGameButton()
     {
-        Application.Quit();
+        new ExitGameHandler().Handle();
     }
 }

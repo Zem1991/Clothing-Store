@@ -27,7 +27,7 @@ public class HUD : GenericUI<Player>
 
         menuCorner.Refresh(player);
         playerInfo.Refresh(player);
-        interaction.Refresh(player.Interactable);
+        interaction.Refresh(player.InteractablePicker?.target);
         Show();
     }
 }

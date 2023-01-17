@@ -12,6 +12,7 @@ public class InventoryUI : GenericUI<Inventory>
             return;
         }
 
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
+        Show();
     }
 }

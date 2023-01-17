@@ -6,7 +6,7 @@ public class Mannequin : MonoBehaviour, Interactable
 {
     public string GetInteractionText()
     {
-        throw new System.NotImplementedException();
+        return $"Buy THING that costs AMOUNT";
     }
 
     public Vector3 GetInteractionPosition()

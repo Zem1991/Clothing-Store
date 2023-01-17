@@ -12,5 +12,6 @@ public class PlayerCharacterInventory : CharacterComponent
         inventory = new();
     }
 
-    public bool Add(Item item) => inventory.Add(item);
+    public Inventory GetInventory() => inventory;
+    //public bool Add(Item item) => inventory.Add(item);
 }
