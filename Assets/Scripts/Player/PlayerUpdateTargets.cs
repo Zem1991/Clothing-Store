@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerUpdateTargets
 {
-    public readonly Inputs inputs;
+    public readonly Player player;
+    public readonly Camera camera;
     public readonly PlayerCharacter playerCharacter;
 
-    public PlayerUpdateTargets(Inputs inputs, PlayerCharacter playerCharacter)
+    public PlayerUpdateTargets(Player player, Camera camera, PlayerCharacter playerCharacter)
     {
-        this.inputs = inputs;
+        this.player = player;
+        this.camera = camera;
         this.playerCharacter = playerCharacter;
     }
 }

@@ -9,6 +9,11 @@ public class Shopkeeper : MonoBehaviour, Interactable
         throw new System.NotImplementedException();
     }
 
+    public Vector3 GetInteractionPosition()
+    {
+        return transform.position;
+    }
+
     public bool Interact(PlayerCharacter playerCharacter)
     {
         throw new System.NotImplementedException();

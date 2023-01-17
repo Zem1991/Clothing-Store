@@ -24,4 +24,9 @@ public class Inputs
         result.Normalize();
         return result;
     }
+
+    public bool InteractDown()
+    {
+        return Input.GetKeyDown(interact);
+    }
 }
