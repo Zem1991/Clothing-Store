@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shopkeeper : MonoBehaviour, Interactable
+public class Shopkeeper : Character, Interactable
 {
     public string GetInteractionText()
     {

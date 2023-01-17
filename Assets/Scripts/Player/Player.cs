@@ -45,6 +45,9 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
+        CameraUpdater cameraUpdater = new(this);
+        cameraUpdater.LateUpdate();
+
         UIUpdater inputUpdater = new(this);
         inputUpdater.LateUpdate();
     }

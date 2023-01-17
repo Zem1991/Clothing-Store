@@ -17,7 +17,7 @@ TagManager:
   - 
   - Interactable
   - Character
-  - 
+  - Character Blocker
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Lower Tile
+    uniqueID: 2513502849
+    locked: 0
+  - name: Middle Tile
+    uniqueID: 3950135893
+    locked: 0
+  - name: Character
+    uniqueID: 2714504637
+    locked: 0
+  - name: Upper Tile
+    uniqueID: 3482345801
     locked: 0

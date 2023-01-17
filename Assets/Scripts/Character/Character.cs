@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    protected Animator animator;
     protected new Rigidbody2D rigidbody2D;
 
     [Header("CharacterComponents")]
-    [SerializeField] protected CharacterMovement movement;
+    [SerializeField] protected CharacterAnimator characterAnimator;
+    [SerializeField] protected CharacterMovement characterMovement;
 
     protected virtual void Awake()
     {
+        animator = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
-        movement = new(this, rigidbody2D);
+        characterAnimator = new(this, animator);
+        characterMovement = new(this, rigidbody2D);
     }
 
-    public void Move(Vector2 direction) => movement.Move(direction);
+    public void Move(Vector2 direction)
+    {
+        characterAnimator.Move(direction);
+        characterMovement.Move(direction);
+    }
 }
