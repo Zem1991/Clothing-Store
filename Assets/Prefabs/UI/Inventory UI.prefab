@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6979447209763527103}
   - component: {fileID: 6979447209763527102}
   m_Layer: 5
-  m_Name: Layout
+  m_Name: Backpack Layout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,12 +105,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6979447210489393358}
+  m_Father: {fileID: 6979447210910648153}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -240}
+  m_AnchoredPosition: {x: 650, y: -480}
   m_SizeDelta: {x: 200, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6979447209763527102
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 6979447210489393356}
   - component: {fileID: 6979447210489393357}
   m_Layer: 5
-  m_Name: Backpack
+  m_Name: Backpack Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,7 +386,6 @@ RectTransform:
   m_Children:
   - {fileID: 3394135728520960080}
   - {fileID: 6979447210872536882}
-  - {fileID: 6979447209763527103}
   m_Father: {fileID: 6979447210910648153}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -599,6 +598,7 @@ RectTransform:
   m_Children:
   - {fileID: 6979447210455005904}
   - {fileID: 6979447210489393358}
+  - {fileID: 6979447209763527103}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -620,6 +620,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 0}
+  head: {fileID: 0}
+  torso: {fileID: 0}
+  legs: {fileID: 0}
+  feet: {fileID: 0}
+  backpackSlots: []
 --- !u!1 &8252030342041706392
 GameObject:
   m_ObjectHideFlags: 0

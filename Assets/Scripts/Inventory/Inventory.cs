@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,26 +6,28 @@ using UnityEngine;
 [System.Serializable]
 public class Inventory
 {
+    private Action OnChange;
+
     [Header("Equipped")]
-    [SerializeField] private InventorySlot<HeadClothing> head;
-    [SerializeField] private InventorySlot<TorsoClothing> torso;
-    [SerializeField] private InventorySlot<LegsClothing> legs;
-    [SerializeField] private InventorySlot<FeetClothing> feet;
-    public InventorySlot<HeadClothing> Head { get => head; private set => head = value; }
-    public InventorySlot<TorsoClothing> Torso { get => torso; private set => torso = value; }
-    public InventorySlot<LegsClothing> Legs { get => legs; private set => legs = value; }
-    public InventorySlot<FeetClothing> Feet { get => feet; private set => feet = value; }
+    [SerializeField] private InventorySlot head;
+    [SerializeField] private InventorySlot torso;
+    [SerializeField] private InventorySlot legs;
+    [SerializeField] private InventorySlot feet;
+    public InventorySlot Head { get => head; private set => head = value; }
+    public InventorySlot Torso { get => torso; private set => torso = value; }
+    public InventorySlot Legs { get => legs; private set => legs = value; }
+    public InventorySlot Feet { get => feet; private set => feet = value; }
 
     [Header("Backpack")]
-    [SerializeField] private List<InventorySlot<Item>> backpack;
-    public List<InventorySlot<Item>> Backpack { get => backpack; private set => backpack = value; }
+    [SerializeField] private List<InventorySlot> backpack;
+    public List<InventorySlot> Backpack { get => backpack; private set => backpack = value; }
 
     public Inventory()
 	{
-        Head = new();
-        Torso = new();
-        Legs = new();
-        Feet = new();
+        Head = new(this, ItemType.HEAD_CLOTHING);
+        Torso = new(this, ItemType.TORSO_CLOTHING);
+        Legs = new(this, ItemType.LEGS_CLOTHING);
+        Feet = new(this, ItemType.FEET_CLOTHING);
         Backpack = new();
     }
 
@@ -32,10 +35,37 @@ public class Inventory
     {
         InventoryHandler inventoryHandler = new(this);
         bool result = inventoryHandler.Add(item);
-        if (result)
-        {
-            Debug.Log($"{item.itemData.idName} added");
-        }
+        InvokeOnChange();
         return result;
     }
+
+    public bool SetAsEquipment(InventorySlot inventorySlot)
+    {
+        InventoryHandler inventoryHandler = new(this);
+        bool result = inventoryHandler.SetAsEquipment(inventorySlot);
+        InvokeOnChange();
+        return result;
+    }
+
+    public bool SendToBackpack(InventorySlot inventorySlot)
+    {
+        InventoryHandler inventoryHandler = new(this);
+        bool result = inventoryHandler.SendToBackpack(inventorySlot);
+        InvokeOnChange();
+        return result;
+    }
+
+    public void TrimBackpack()
+    {
+        List<InventorySlot> newBackpack = new();
+        foreach (InventorySlot slot in Backpack)
+        {
+            if (slot.IsEmpty()) continue;
+            newBackpack.Add(slot);
+        }
+        Backpack = newBackpack;
+    }
+
+    public void SetOnChange(Action action) => OnChange = action;
+    private void InvokeOnChange() => OnChange?.Invoke();
 }

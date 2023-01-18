@@ -21,7 +21,7 @@ public abstract class InventorySlotHandler<T> where T : Item
     public bool Add(T item)
     {
         bool result = false;
-        List<InventorySlot<T>> slotList = GetSlots();
+        List<InventorySlot> slotList = GetSlots();
         foreach (var slot in slotList)
         {
             result = slot.Add(item);
@@ -30,5 +30,5 @@ public abstract class InventorySlotHandler<T> where T : Item
         return result;
     }
 
-    protected abstract List<InventorySlot<T>> GetSlots();
+    protected abstract List<InventorySlot> GetSlots();
 }

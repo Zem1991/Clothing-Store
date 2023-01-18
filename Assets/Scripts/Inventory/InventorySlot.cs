@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class InventorySlot<T> where T : Item
+public class InventorySlot
 {
-    [SerializeField] private T current;
+    public readonly Inventory inventory;
+    public readonly ItemType itemType;
+    [SerializeField] private Item current;
 
-    public InventorySlot()
+    public InventorySlot(Inventory inventory, ItemType itemType)
     {
+        this.inventory = inventory;
+        this.itemType = itemType;
         current = null;
     }
 
@@ -18,7 +22,7 @@ public class InventorySlot<T> where T : Item
         //return current?.itemData == null;
     }
 
-    public T Get()
+    public Item Get()
     {
         return current;
     }
@@ -28,29 +32,31 @@ public class InventorySlot<T> where T : Item
         current = null;
     }
 
-    public T Eject()
+    public Item Eject()
     {
-        T previous = current;
+        Item previous = current;
         current = null;
         return previous;
     }
 
-    public bool Add(T item)
+    public bool Add(Item item)
     {
         if (!IsEmpty()) return false;
+        if (!itemType.IsCompatibleWith(item)) return false;
         current = item;
-        Debug.Log($"{item.itemData.idName} on slot");
         return true;
     }
 
-    public bool Swap(T item, out T previous)
+    public bool Swap(Item item, out Item previous)
     {
+        previous = null;
+        if (!itemType.IsCompatibleWith(item)) return false;
         previous = current;
         current = item;
         return true;
     }
 
-    public bool Remove(T item, out T previous)
+    public bool Remove(Item item, out Item previous)
     {
         previous = null;
         if (item == null) return false;

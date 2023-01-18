@@ -6,13 +6,11 @@ using UnityEngine.UI;
 public abstract class GenericUI<T> : MonoBehaviour
 {
     [Header("GenericUI Awake")]
-    [SerializeField] private Image background;
+    [SerializeField] protected Image background;
 
     protected virtual void Awake()
     {
-        List<Image> sprites = new List<Image>(GetComponentsInChildren<Image>());
-        if (sprites.Count <= 0) return;
-        background = sprites[0];
+        background = GetComponent<Image>();
     }
 
     protected void Show()

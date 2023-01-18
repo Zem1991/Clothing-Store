@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,12 @@ public class Player : MonoBehaviour
         Camera = FindObjectOfType<Camera>();
         PlayerCharacter = FindObjectOfType<PlayerCharacter>();
         InteractablePicker = null;
+    }
+
+    private void Start()
+    {
+        Action inventoryOnChange = new InventoryUIUpdater(this, UI).Update;
+        PlayerCharacter.GetInventory().SetOnChange(inventoryOnChange);
     }
 
     private void FixedUpdate()
@@ -66,6 +73,6 @@ public class Player : MonoBehaviour
     public void SubtractMoney(int amount)
     {
         if (amount <= 0) return;
-        money += amount;
+        money -= amount;
     }
 }

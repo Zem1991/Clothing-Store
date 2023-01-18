@@ -8,7 +8,7 @@ public class FeetSlotHandler : InventorySlotHandler<FeetClothing>
     {
     }
 
-    protected override List<InventorySlot<FeetClothing>> GetSlots()
+    protected override List<InventorySlot> GetSlots()
     {
         return new() { inventory.Feet };
     }

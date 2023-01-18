@@ -8,7 +8,7 @@ public class HeadSlotHandler : InventorySlotHandler<HeadClothing>
     {
     }
 
-    protected override List<InventorySlot<HeadClothing>> GetSlots()
+    protected override List<InventorySlot> GetSlots()
     {
         return new() { inventory.Head };
     }

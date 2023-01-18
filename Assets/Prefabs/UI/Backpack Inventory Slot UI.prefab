@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -298,9 +298,9 @@ GameObject:
   - component: {fileID: 1487426305643944913}
   - component: {fileID: 5339797974318092257}
   - component: {fileID: 6932647233424985641}
-  - component: {fileID: 670284345001716032}
+  - component: {fileID: 1053320434759033756}
   m_Layer: 5
-  m_Name: Inventory Slot UI
+  m_Name: Backpack Inventory Slot UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &670284345001716032
+--- !u!114 &1053320434759033756
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -376,7 +376,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4829285794874386453}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d877b5e6c47d41e41a23c3e16eeb050e, type: 3}
+  m_Script: {fileID: 11500000, guid: f02440cb9c5dbd847b2e882864b6f479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 0}
+  itemName: {fileID: 0}
+  iconBack: {fileID: 0}
+  iconFront: {fileID: 0}

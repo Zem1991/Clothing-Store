@@ -15,4 +15,6 @@ public abstract class ItemData : ScriptableObject
 
     //[Header("Art")]
     //[SerializeField] public GameObject model;
+
+    public abstract ItemType GetItemType();
 }
