@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public abstract class InventorySlotUI : GenericUI<InventorySlot>, IPointerClickHandler
 {
     [Header("InventorySlotUI Awake")]
-    [SerializeField] private TMP_Text itemName;
+    [SerializeField] protected TMP_Text slotName;
     [SerializeField] private Image iconBack;
     [SerializeField] private Image iconFront;
 
@@ -20,10 +20,10 @@ public abstract class InventorySlotUI : GenericUI<InventorySlot>, IPointerClickH
         base.Awake();
 
         List<TMP_Text> texts = new List<TMP_Text>(GetComponentsInChildren<TMP_Text>());
+        slotName = texts[0];
+
         List<Image> sprites = new List<Image>(GetComponentsInChildren<Image>());
         sprites.Remove(background);
-
-        itemName = texts[0];
         iconBack = sprites[0];
         iconFront = sprites[1];
     }
@@ -33,15 +33,11 @@ public abstract class InventorySlotUI : GenericUI<InventorySlot>, IPointerClickH
         inventorySlot = thing;
         Item item = thing.Get();
         bool hasItem = item != null;
-        itemName.text = hasItem ? item.itemData.idName : "<empty>";
         iconFront.sprite = item?.itemData.idIcon;
         iconFront.enabled = hasItem;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        PointerClick();
-    }
+    public void OnPointerClick(PointerEventData eventData) => PointerClick();
 
     protected abstract void PointerClick();
 }
