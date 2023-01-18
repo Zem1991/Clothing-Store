@@ -29,7 +29,7 @@ public class InputUpdater
     {
         Interactable interactable = player.InteractablePicker.target;
         bool interact = player.Inputs.InteractDown();
-        if (interactable != null && interact) interactable.Interact(player.PlayerCharacter);
+        if (interactable != null && interact) interactable.Interact(player);
 
         bool inventory = player.Inputs.InventoryDown();
         if (inventory) player.UI.ToggleInventory();

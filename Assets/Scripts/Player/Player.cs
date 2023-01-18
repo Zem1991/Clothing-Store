@@ -56,4 +56,16 @@ public class Player : MonoBehaviour
     //{
     //    return new(this, camera, playerCharacter);
     //}
+
+    public void AddMoney(int amount)
+    {
+        if (amount <= 0) return;
+        money += amount;
+    }
+
+    public void SubtractMoney(int amount)
+    {
+        if (amount <= 0) return;
+        money += amount;
+    }
 }

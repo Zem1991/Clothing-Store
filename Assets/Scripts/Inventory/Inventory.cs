@@ -31,6 +31,11 @@ public class Inventory
     public bool Add(Item item)
     {
         InventoryHandler inventoryHandler = new(this);
-        return inventoryHandler.Add(item);
+        bool result = inventoryHandler.Add(item);
+        if (result)
+        {
+            Debug.Log($"{item.itemData.idName} added");
+        }
+        return result;
     }
 }

@@ -14,7 +14,7 @@ public class ExitDoor : MonoBehaviour, Interactable
         return transform.position;
     }
 
-    public bool Interact(PlayerCharacter playerCharacter)
+    public bool Interact(Player player)
     {
         new ExitGameHandler().Handle();
         return true;

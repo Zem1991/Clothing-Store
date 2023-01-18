@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Clothing : Item
+public abstract class Clothing : Item
 {
-
+    protected Clothing(ItemData itemData) : base(itemData)
+    {
+    }
 }

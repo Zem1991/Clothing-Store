@@ -13,8 +13,10 @@ public class PlayerInfoUI : GenericUI<Player>
     protected override void Awake()
     {
         base.Awake();
+        List<TMP_Text> texts = new List<TMP_Text>(GetComponentsInChildren<TMP_Text>());
+
         moneyIcon = GetComponentInChildren<Image>();
-        moneyText = GetComponentInChildren<TMP_Text>();
+        moneyText = texts[0];
     }
 
     public override void Refresh(Player thing)

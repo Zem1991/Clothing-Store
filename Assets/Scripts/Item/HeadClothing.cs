@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class HeadClothing : Clothing
 {
-
+    public HeadClothing(ItemData itemData) : base(itemData)
+    {
+    }
 }

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f63ea471946f249b3b2a28a7585c0c, type: 3}
+  m_Script: {fileID: 11500000, guid: e5209f0d7b1d98040b1f5b5070d59360, type: 3}
   m_Name: Acqua Shirt
   m_EditorClassIdentifier: 
-  idName: Bland Jeans
-  idIcon: {fileID: 1261207189, guid: 4807d3dd184497a4993da0e9b4297c4a, type: 3}
-  price: 8
-  description: For hardcore jeans users.
+  idName: Acqua Shirt
+  idIcon: {fileID: -1227271547, guid: 4807d3dd184497a4993da0e9b4297c4a, type: 3}
+  price: 5
+  description: Camouflage for intense pool action.

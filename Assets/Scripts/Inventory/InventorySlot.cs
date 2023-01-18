@@ -39,6 +39,7 @@ public class InventorySlot<T> where T : Item
     {
         if (!IsEmpty()) return false;
         current = item;
+        Debug.Log($"{item.itemData.idName} on slot");
         return true;
     }
 

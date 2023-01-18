@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Project Data/Item/Miscellaneous")]
-public class ItemData : ScriptableObject
+//[CreateAssetMenu(menuName = "Project Data/Item/Miscellaneous")]
+public abstract class ItemData : ScriptableObject
 {
     [Header("Identification")]
     [SerializeField] public string idName = "Unnamed";

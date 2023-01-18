@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Mannequin : MonoBehaviour, Interactable
 {
+    [Header("Settings")]
+    [SerializeField] private ItemData item;
+
     public string GetInteractionText()
     {
-        return $"Buy THING that costs AMOUNT";
+        return $"Buy {item.idName} for ${item.price}";
     }
 
     public Vector3 GetInteractionPosition()
@@ -14,8 +17,9 @@ public class Mannequin : MonoBehaviour, Interactable
         return transform.position;
     }
 
-    public bool Interact(PlayerCharacter playerCharacter)
+    public bool Interact(Player player)
     {
-        throw new System.NotImplementedException();
+        MoneyTransactionHandler handler = new(player);
+        return handler.BuyItem(item);
     }
 }

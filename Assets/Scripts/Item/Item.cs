@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Item
+public abstract class Item
 {
-    //[SerializeField] public string dae = "dae";
+    [Header("Data")]
+    [SerializeField] public readonly ItemData itemData;
+
+    public Item(ItemData itemData)
+    {
+        this.itemData = itemData;
+    }
 }

@@ -14,7 +14,7 @@ public class Shopkeeper : Character, Interactable
         return transform.position;
     }
 
-    public bool Interact(PlayerCharacter playerCharacter)
+    public bool Interact(Player player)
     {
         throw new System.NotImplementedException();
     }

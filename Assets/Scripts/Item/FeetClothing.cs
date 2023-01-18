@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class FeetClothing : Clothing
 {
-
+    public FeetClothing(ItemData itemData) : base(itemData)
+    {
+    }
 }
