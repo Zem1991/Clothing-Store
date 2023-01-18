@@ -32,7 +32,7 @@ public class InputUpdater
         if (interactable != null && interact) interactable.Interact(player);
 
         bool inventory = player.Inputs.InventoryDown();
-        if (inventory) player.UI.ToggleInventory();
+        if (inventory) player.UI.ToggleInventory(player);
 
         bool cancel = player.Inputs.CancelDown();
         if (cancel) player.UI.Cancel();

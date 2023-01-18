@@ -13,6 +13,6 @@ public abstract class Item
     public Item(ItemData itemData)
     {
         this.itemData = itemData;
-        spawnDateTime = DateTime.Now;
+        spawnDateTime = DateTime.UtcNow;
     }
 }

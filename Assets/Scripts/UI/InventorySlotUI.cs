@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class InventorySlotUI : GenericUI<InventorySlot>, IPointerClickHandler
+public abstract class InventorySlotUI : GenericUI<InventorySlot>, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [Header("InventorySlotUI Awake")]
     [SerializeField] protected TMP_Text slotName;
@@ -30,6 +30,7 @@ public abstract class InventorySlotUI : GenericUI<InventorySlot>, IPointerClickH
 
     public override void Refresh(InventorySlot thing)
     {
+        if (!gameObject.activeInHierarchy) return;
         inventorySlot = thing;
         Item item = thing.Get();
         bool hasItem = item != null;
@@ -37,7 +38,19 @@ public abstract class InventorySlotUI : GenericUI<InventorySlot>, IPointerClickH
         iconFront.enabled = hasItem;
     }
 
+    public void OnPointerEnter(PointerEventData eventData) => PointerEnter();
+    public void OnPointerExit(PointerEventData eventData) => PointerExit();
     public void OnPointerClick(PointerEventData eventData) => PointerClick();
+
+    protected virtual void PointerEnter()
+    {
+        inventorySlot.inventory.SetDisplay(inventorySlot);
+    }
+
+    protected virtual void PointerExit()
+    {
+        inventorySlot.inventory.ClearDisplay(inventorySlot);
+    }
 
     protected abstract void PointerClick();
 }

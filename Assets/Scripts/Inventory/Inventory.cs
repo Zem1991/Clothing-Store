@@ -22,6 +22,10 @@ public class Inventory
     [SerializeField] private List<InventorySlot> backpack;
     public List<InventorySlot> Backpack { get => backpack; private set => backpack = value; }
 
+    [Header("Runtime")]
+    private InventorySlot display;
+    public InventorySlot Display { get => display; private set => display = value; }
+
     public Inventory()
 	{
         Head = new(this, ItemType.HEAD_CLOTHING);
@@ -64,6 +68,16 @@ public class Inventory
             newBackpack.Add(slot);
         }
         Backpack = newBackpack;
+    }
+
+    public void SetDisplay(InventorySlot inventorySlot)
+    {
+        Display = inventorySlot;
+    }
+
+    public void ClearDisplay(InventorySlot inventorySlot)
+    {
+        if (Display == inventorySlot) Display = null;
     }
 
     public void SetOnChange(Action action) => OnChange = action;

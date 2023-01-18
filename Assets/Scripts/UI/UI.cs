@@ -35,12 +35,13 @@ public class UI : MonoBehaviour
 
     public void ManualUpdateInventory(Player player)
     {
-        inventory.ManualUpdate(player.PlayerCharacter.GetInventory());
+        if (inventoryActive) inventory.ManualUpdate(player.PlayerCharacter.GetInventory());
     }
 
-    public void ToggleInventory()
+    public void ToggleInventory(Player player)
     {
         inventoryActive = !inventoryActive;
+        ManualUpdateInventory(player);
     }
 
     public void Cancel()

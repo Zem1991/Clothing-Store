@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,18 +11,21 @@ public class InventoryUI : GenericUI<Inventory>
     [SerializeField] protected EquipmentInventorySlotUI legs;
     [SerializeField] protected EquipmentInventorySlotUI feet;
     [SerializeField] protected GridLayoutGroup backpackGrid;
+    [SerializeField] protected ItemDescriptionUI itemDisplay;
 
     [Header("InventoryUI Runtime")]
     [SerializeField] protected Dictionary<InventorySlot, BackpackInventorySlotUI> backpackSlots;
 
     protected override void Awake()
     {
+        base.Awake();
         List<EquipmentInventorySlotUI> equipmentSlots = new List<EquipmentInventorySlotUI>(GetComponentsInChildren<EquipmentInventorySlotUI>());
         head = equipmentSlots[0];
         torso = equipmentSlots[1];
         legs = equipmentSlots[2];
         feet = equipmentSlots[3];
         backpackGrid = GetComponentInChildren<GridLayoutGroup>();
+        itemDisplay = GetComponentInChildren<ItemDescriptionUI>();
         backpackSlots = new();
     }
 
@@ -40,6 +42,7 @@ public class InventoryUI : GenericUI<Inventory>
         legs.Refresh(inventory.Legs);
         feet.Refresh(inventory.Feet);
         RefreshBackpack();
+        itemDisplay.Refresh(inventory.Display);
         Show();
     }
 
