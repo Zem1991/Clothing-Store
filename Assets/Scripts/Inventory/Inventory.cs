@@ -23,7 +23,9 @@ public class Inventory
     public List<InventorySlot> Backpack { get => backpack; private set => backpack = value; }
 
     [Header("Runtime")]
+    private Player player;
     private InventorySlot display;
+    public Player Player { get => player; private set => player = value; }
     public InventorySlot Display { get => display; private set => display = value; }
 
     public Inventory()
@@ -33,6 +35,8 @@ public class Inventory
         Legs = new(this, ItemType.LEGS_CLOTHING);
         Feet = new(this, ItemType.FEET_CLOTHING);
         Backpack = new();
+        Player = null;
+        Display = null;
     }
 
     public bool Add(Item item)
@@ -79,6 +83,8 @@ public class Inventory
     {
         if (Display == inventorySlot) Display = null;
     }
+
+    public void SetOwner(Player player) => Player = player;
 
     public void SetOnChange(Action action) => OnChange = action;
     private void InvokeOnChange() => OnChange?.Invoke();

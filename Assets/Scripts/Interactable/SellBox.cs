@@ -6,7 +6,7 @@ public class SellBox : MonoBehaviour, Interactable
 {
     public string GetInteractionText()
     {
-        return "Sell your Items";
+        return "Sell your backpack items";
     }
 
     public Vector3 GetInteractionPosition()
@@ -16,6 +16,7 @@ public class SellBox : MonoBehaviour, Interactable
 
     public bool Interact(Player player)
     {
-        throw new System.NotImplementedException();
+        player.UI.ToggleSellFromBackpack(player);
+        return true;
     }
 }

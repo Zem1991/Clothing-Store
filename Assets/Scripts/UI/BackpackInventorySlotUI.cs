@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BackpackInventorySlotUI : InventorySlotUI
 {
-    [Header("EquipmentInventorySlotUI Awake")]
+    [Header("BackpackInventorySlotUI References")]
     [SerializeField] private TMP_Text itemName;
     [SerializeField] private TMP_Text itemPrice;
 
@@ -14,8 +14,6 @@ public class BackpackInventorySlotUI : InventorySlotUI
         base.Awake();
 
         //List<TMP_Text> texts = new List<TMP_Text>(GetComponentsInChildren<TMP_Text>());
-        //texts.Remove(slotName);
-
         //itemName = texts[0];
         //itemPrice = texts[1];
     }
@@ -23,10 +21,10 @@ public class BackpackInventorySlotUI : InventorySlotUI
     public override void Refresh(InventorySlot thing)
     {
         base.Refresh(thing);
-        //Item item = thing.Get();
-        //bool hasItem = item != null;
-        //itemName.text = hasItem ? item.itemData.idName : "<empty>";
-        //itemPrice.text = hasItem ? $"${item.itemData.price}" : null;
+        Item item = thing.Get();
+        bool hasItem = item != null;
+        itemName.text = hasItem ? item.itemData.idName : "<empty>";
+        itemPrice.text = hasItem ? $"${item.itemData.price}" : null;
     }
 
     protected override void PointerClick()

@@ -31,8 +31,10 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        Inventory inventory = PlayerCharacter.GetInventory();
         Action inventoryOnChange = new InventoryUIUpdater(this, UI).Update;
-        PlayerCharacter.GetInventory().SetOnChange(inventoryOnChange);
+        inventory.SetOwner(this);
+        inventory.SetOnChange(inventoryOnChange);
     }
 
     private void FixedUpdate()

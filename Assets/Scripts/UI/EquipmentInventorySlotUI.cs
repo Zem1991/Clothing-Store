@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EquipmentInventorySlotUI : InventorySlotUI
 {
-    [Header("EquipmentInventorySlotUI Awake")]
+    [Header("EquipmentInventorySlotUI References")]
     [SerializeField] private TMP_Text itemName;
     [SerializeField] private TMP_Text itemPrice;
 
@@ -14,11 +13,11 @@ public class EquipmentInventorySlotUI : InventorySlotUI
     {
         base.Awake();
 
-        List<TMP_Text> texts = new List<TMP_Text>(GetComponentsInChildren<TMP_Text>());
-        texts.Remove(slotName);
+        //List<TMP_Text> texts = new List<TMP_Text>(GetComponentsInChildren<TMP_Text>());
+        //texts.Remove(slotName);
 
-        itemName = texts[0];
-        itemPrice = texts[1];
+        //itemName = texts[0];
+        //itemPrice = texts[1];
     }
 
     public override void Refresh(InventorySlot thing)

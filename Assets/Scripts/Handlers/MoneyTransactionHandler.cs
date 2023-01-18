@@ -22,4 +22,12 @@ public class MoneyTransactionHandler
         }
         return added;
     }
+
+    public bool SellItem(InventorySlot inventorySlot)
+    {
+        Item item = inventorySlot.Eject();
+        if (item == null) return false;
+        player.AddMoney(item.itemData.price);
+        return true;
+    }
 }

@@ -29,20 +29,20 @@ public class InventoryUI : GenericUI<Inventory>
         backpackSlots = new();
     }
 
-    public override void Refresh(Inventory inventory)
+    public override void Refresh(Inventory thing)
     {
-        if (inventory == null)
+        if (thing == null)
         {
             Hide();
             return;
         }
 
-        head.Refresh(inventory.Head);
-        torso.Refresh(inventory.Torso);
-        legs.Refresh(inventory.Legs);
-        feet.Refresh(inventory.Feet);
+        head.Refresh(thing.Head);
+        torso.Refresh(thing.Torso);
+        legs.Refresh(thing.Legs);
+        feet.Refresh(thing.Feet);
         RefreshBackpack();
-        itemDisplay.Refresh(inventory.Display);
+        itemDisplay.Refresh(thing.Display);
         Show();
     }
 
@@ -55,6 +55,7 @@ public class InventoryUI : GenericUI<Inventory>
             BackpackInventorySlotUI slotUI = Instantiate(prefab, backpackGrid.transform);
             backpackSlots.Add(slot, slotUI);
         }
+        RefreshBackpack();
     }
 
     private void RefreshBackpack()

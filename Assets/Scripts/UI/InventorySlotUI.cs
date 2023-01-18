@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public abstract class InventorySlotUI : GenericUI<InventorySlot>, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [Header("InventorySlotUI Awake")]
+    [Header("InventorySlotUI References")]
     [SerializeField] protected TMP_Text slotName;
     [SerializeField] private Image iconBack;
     [SerializeField] private Image iconFront;
@@ -19,18 +19,17 @@ public abstract class InventorySlotUI : GenericUI<InventorySlot>, IPointerEnterH
     {
         base.Awake();
 
-        List<TMP_Text> texts = new List<TMP_Text>(GetComponentsInChildren<TMP_Text>());
-        slotName = texts[0];
+        //List<TMP_Text> texts = new List<TMP_Text>(GetComponentsInChildren<TMP_Text>());
+        //slotName = texts[0];
 
-        List<Image> sprites = new List<Image>(GetComponentsInChildren<Image>());
-        sprites.Remove(background);
-        iconBack = sprites[0];
-        iconFront = sprites[1];
+        //List<Image> sprites = new List<Image>(GetComponentsInChildren<Image>());
+        //sprites.Remove(background);
+        //iconBack = sprites[0];
+        //iconFront = sprites[1];
     }
 
     public override void Refresh(InventorySlot thing)
     {
-        if (!gameObject.activeInHierarchy) return;
         inventorySlot = thing;
         Item item = thing.Get();
         bool hasItem = item != null;

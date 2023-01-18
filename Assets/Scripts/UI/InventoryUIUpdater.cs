@@ -16,5 +16,6 @@ public class InventoryUIUpdater
     public void Update()
     {
         ui.ManualUpdateInventory(player);
+        ui.ManualUpdateSellFromBackpack(player);
     }
 }
