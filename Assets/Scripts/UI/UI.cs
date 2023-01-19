@@ -11,8 +11,12 @@ public class UI : MonoBehaviour
     [SerializeField] private DialogueUI dialogue;
 
     [Header("Runtime")]
+    [SerializeField] private Player player;
     [SerializeField] private bool inventoryActive;
     [SerializeField] private bool sellFromBackpackActive;
+    public Player Player { get => player; private set => player = value; }
+    public bool InventoryActive { get => inventoryActive; private set => inventoryActive = value; }
+    public bool SellFromBackpackActive { get => sellFromBackpackActive; private set => sellFromBackpackActive = value; }
 
     private void Awake()
     {
@@ -25,42 +29,43 @@ public class UI : MonoBehaviour
 
     public void Refresh(Player player)
     {
+        Player = player;
         hud.Refresh(player);
-        inventory.Refresh(inventoryActive ? player.PlayerCharacter.GetInventory() : null);
-        sellFromBackpack.Refresh(sellFromBackpackActive ? player.PlayerCharacter.GetInventory() : null);
+        inventory.Refresh(InventoryActive ? player.PlayerCharacter.GetInventory() : null);
+        sellFromBackpack.Refresh(SellFromBackpackActive ? player.PlayerCharacter.GetInventory() : null);
         dialogue.Refresh(player?.DialogueScript);
     }
 
     public void ToggleInventory(Player player)
     {
-        inventoryActive = !inventoryActive;
-        if (inventoryActive) player.SetGameState(GameState.INVENTORY);
+        InventoryActive = !InventoryActive;
+        if (InventoryActive) player.SetGameState(GameState.INVENTORY);
         else player.SetGameState(GameState.NORMAL);
         ManualUpdateInventory(player);
     }
 
     public void ManualUpdateInventory(Player player)
     {
-        if (inventoryActive) inventory.ManualUpdate(player.PlayerCharacter.GetInventory());
+        if (InventoryActive) inventory.ManualUpdate(player.PlayerCharacter.GetInventory());
     }
 
     public void ToggleSellFromBackpack(Player player)
     {
-        sellFromBackpackActive = !sellFromBackpackActive;
-        if (sellFromBackpackActive) player.SetGameState(GameState.SELL_ITEMS);
+        SellFromBackpackActive = !SellFromBackpackActive;
+        if (SellFromBackpackActive) player.SetGameState(GameState.SELL_ITEMS);
         else player.SetGameState(GameState.NORMAL);
         ManualUpdateSellFromBackpack(player);
     }
 
     public void ManualUpdateSellFromBackpack(Player player)
     {
-        if (sellFromBackpackActive) sellFromBackpack.ManualUpdate(player.PlayerCharacter.GetInventory());
+        if (SellFromBackpackActive) sellFromBackpack.ManualUpdate(player.PlayerCharacter.GetInventory());
     }
 
     public void CancelToggles(Player player)
     {
-        inventoryActive = false;
-        sellFromBackpackActive = false;
+        InventoryActive = false;
+        SellFromBackpackActive = false;
         player.SetGameState(GameState.NORMAL);
     }
 }
