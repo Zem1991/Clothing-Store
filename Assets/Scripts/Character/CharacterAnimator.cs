@@ -16,9 +16,9 @@ public class CharacterAnimator : CharacterComponent
     public void Move(Vector2 direction)
     {
         float speed = direction.magnitude;
+        animator.SetFloat("Speed", speed);
         if (speed <= 0) return;
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
-        animator.SetFloat("Speed", speed);
     }
 }

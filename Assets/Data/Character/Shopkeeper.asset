@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idName: Shopkeeper
   face: {fileID: 0}
-  voice: {fileID: 8300000, guid: d212fb3d9010e034a8b1a0211a5f2bb3, type: 3}
+  voice: {fileID: 8300000, guid: f687f3824dc3014489d76bc173ee45d3, type: 3}

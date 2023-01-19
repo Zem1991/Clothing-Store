@@ -19,6 +19,7 @@ public class MoneyTransactionHandler
         if (added)
         {
             player.SubtractMoney(itemData.Price);
+            new SystemSoundEffectPlayer().MoneyTransaction();
         }
         return added;
     }
@@ -28,6 +29,7 @@ public class MoneyTransactionHandler
         Item item = inventorySlot.Eject();
         if (item == null) return false;
         player.AddMoney(item.itemData.Price);
+        new SystemSoundEffectPlayer().MoneyTransaction();
         return true;
     }
 }

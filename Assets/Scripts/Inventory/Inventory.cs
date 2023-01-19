@@ -78,6 +78,7 @@ public class Inventory
     {
         TrimBackpack();
         OnChange?.Invoke();
+        new SystemSoundEffectPlayer().ConfirmAction();
     }
 
     public void ClearDisplay(InventorySlot inventorySlot)

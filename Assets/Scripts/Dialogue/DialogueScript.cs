@@ -8,14 +8,17 @@ public class DialogueScript
     [Header("Setup")]
     private Queue<DialogueLineData> lines;
     private Player player;
+    private float typingSpeed = 0.02F;
 
     [Header("Execution")]
     private DialogueLineData line;
+    private AudioClip lineVoice;
     private string lineName;
     private string lineMessage;
     private bool isRunning;
     private bool isTyping;
     private IEnumerator typing;
+    private SoundEffectPlayer soundEffectPlayer;
 
     public DialogueScript(Player player, DialogueScriptData dialogueScriptData)
     {
@@ -57,6 +60,7 @@ public class DialogueScript
         }
 
         line = lines.Dequeue();
+        lineVoice = line.Character.Voice;
         lineName = line.Character.IdName;
         lineMessage = "";
 
@@ -68,11 +72,12 @@ public class DialogueScript
     {
         isTyping = true;
         char[] charArray = line.Text.ToCharArray();
-        lineMessage = "";
+        //lineMessage = "";
         foreach (char forChar in charArray)
         {
+            PlayVoiceSound();
             lineMessage += forChar;
-            yield return null;
+            yield return new WaitForSeconds(typingSpeed);
         }
         FinishTyping();
     }
@@ -80,6 +85,7 @@ public class DialogueScript
     private void FinishTyping()
     {
         player.StopCoroutine(typing);
+        PlayVoiceSound();
         lineMessage = line.Text;
         isTyping = false;
     }
@@ -89,5 +95,13 @@ public class DialogueScript
         isRunning = false;
         player.ClearDialogueScript();
         player.SetGameState(GameState.NORMAL);
+    }
+
+    private void PlayVoiceSound()
+    {
+        if (soundEffectPlayer != null && soundEffectPlayer.IsPlaying()) return;
+        //if (soundEffectPlayer != null) soundEffectPlayer.Stop();
+        soundEffectPlayer = new SoundEffectPlayer(lineVoice);
+        soundEffectPlayer.Play();
     }
 }
