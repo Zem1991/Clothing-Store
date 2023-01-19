@@ -5,21 +5,29 @@ using UnityEngine;
 public class InteractablePicker
 {
     [Header("Settings")]
-    [SerializeField] private PlayerCharacter playerCharacter;
-    [SerializeField] private InteractableHighlight interactableHighlight;
+    [SerializeField] private Player player;
 
     [Header("Runtime")]
+    [SerializeField] private PlayerCharacter playerCharacter;
+    [SerializeField] private InteractableHighlight interactableHighlight;
     [SerializeField] public Vector3 position;
     [SerializeField] public Interactable target;
 
-    public InteractablePicker(PlayerCharacter playerCharacter, InteractableHighlight interactableHighlight)
+    public InteractablePicker(Player player)
     {
-        this.playerCharacter = playerCharacter;
-        this.interactableHighlight = interactableHighlight;
+        this.player = player;
+        playerCharacter = player.PlayerCharacter;
+        interactableHighlight = player.InteractableHighlight;
     }
 
     public void Pick()
     {
+        if (!player.GameState.IsPlayable())
+        {
+            interactableHighlight.Hide();
+            return;
+        }
+
         Vector3 findPos = playerCharacter.transform.position;
         InteractableFinder finder = new();
         target = finder.OverlapSphere(findPos);

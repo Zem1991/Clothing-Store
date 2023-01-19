@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
     protected new Rigidbody2D rigidbody2D;
 
     [Header("Character Data")]
-    [SerializeField] public readonly CharacterData characterData;
+    [SerializeField] public CharacterData characterData;
 
     [Header("CharacterComponents")]
     [SerializeField] protected CharacterAnimator characterAnimator;

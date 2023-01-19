@@ -13,14 +13,9 @@ public class InputUpdater
         this.player = player;
     }
 
-    //public InputUpdater(Inputs inputs, PlayerUpdateTargets playerUpdateTargets)
-    //{
-    //    this.inputs = inputs;
-    //    this.playerUpdateTargets = playerUpdateTargets;
-    //}
-
     public void FixedUpdate()
     {
+        if (!IsPlayable()) return;
         Vector2 movementAxes = player.Inputs.MovementAxes();
         player.PlayerCharacter.Move(movementAxes);
     }
@@ -29,12 +24,46 @@ public class InputUpdater
     {
         Interactable interactable = player.InteractablePicker.target;
         bool interact = player.Inputs.InteractDown();
-        if (interactable != null && interact) interactable.Interact(player);
-
         bool inventory = player.Inputs.InventoryDown();
-        if (inventory) player.UI.ToggleInventory(player);
-
         bool cancel = player.Inputs.CancelDown();
-        if (cancel) player.UI.Cancel();
+
+        if (IsPlayable())
+        {
+            if (interact) interactable?.Interact(player);
+            if (inventory) player.UI.ToggleInventory(player);
+            if (cancel) player.UI.CancelToggles(player);
+        }
+        else if (InInventory())
+        {
+            if (inventory || cancel) player.UI.ToggleInventory(player);
+        }
+        else if (InSellItems())
+        {
+            if (cancel) player.UI.ToggleSellFromBackpack(player);
+        }
+        else if (InDialogue())
+        {
+            if (interact || cancel) player.DialogueScript?.Interaction();
+        }
+    }
+
+    private bool IsPlayable()
+    {
+        return player.GameState.IsPlayable();
+    }
+
+    private bool InInventory()
+    {
+        return player.GameState == GameState.INVENTORY;
+    }
+
+    private bool InSellItems()
+    {
+        return player.GameState == GameState.SELL_ITEMS;
+    }
+
+    private bool InDialogue()
+    {
+        return player.GameState == GameState.DIALOGUE;
     }
 }

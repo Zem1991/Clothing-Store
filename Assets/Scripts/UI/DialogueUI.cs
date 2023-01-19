@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DialogueUI : GenericUI<DialogueLine>
+public class DialogueUI : GenericUI<DialogueScript>
 {
-    [Header("DialogueUI Awake")]
+    [Header("DialogueUI References")]
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text messageText;
     [SerializeField] private RectTransform prompt;
@@ -13,22 +13,22 @@ public class DialogueUI : GenericUI<DialogueLine>
     protected override void Awake()
     {
         base.Awake();
-        List<TMP_Text> texts = new List<TMP_Text>(GetComponentsInChildren<TMP_Text>());
-        nameText = texts[0];
-        messageText = texts[1];
+        //List<TMP_Text> texts = new List<TMP_Text>(GetComponentsInChildren<TMP_Text>());
+        //nameText = texts[0];
+        //messageText = texts[1];
     }
 
     //public void Refresh(DialogueLine line, bool showPrompt)
-    public override void Refresh(DialogueLine line)
+    public override void Refresh(DialogueScript thing)
     {
-        if (line == null)
+        if (thing == null)
         {
             Hide();
             return;
         }
 
-        nameText.text = line.Character.IdName;
-        messageText.text = line.Text;
+        nameText.text = thing.GetName();
+        messageText.text = thing.GetMessage();
         //prompt.gameObject.SetActive(showPrompt);
         Show();
     }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959e33cb78869ed4799ad796a5d77ede, type: 3}
   m_Name: Shopkeeper
   m_EditorClassIdentifier: 
-  idName: Shopkeeperamed
+  idName: Shopkeeper
   face: {fileID: 0}
   voice: {fileID: 8300000, guid: d212fb3d9010e034a8b1a0211a5f2bb3, type: 3}

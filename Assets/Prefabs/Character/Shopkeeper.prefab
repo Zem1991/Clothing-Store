@@ -134,6 +134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84253394afaff5746adae4bb8997ddec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterData: {fileID: 0}
+  characterMovement:
+    moveSpeed: 0
+  dialogueScriptData: {fileID: 11400000, guid: 053a80050e6d5d34cbde522de6c44d7c, type: 2}
 --- !u!212 &7865313418269845265
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Shopkeeper : Character, Interactable
 {
+    [Header("Shopkeeper Data")]
+    [SerializeField] public DialogueScriptData dialogueScriptData;
+
     public string GetInteractionText()
     {
         return "Talk to Shopkeeper";
@@ -16,6 +19,6 @@ public class Shopkeeper : Character, Interactable
 
     public bool Interact(Player player)
     {
-        throw new System.NotImplementedException();
+        return player.StartDialogueScript(dialogueScriptData);
     }
 }

@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a4181e8b09e127428d482d1ba01811c, type: 3}
-  m_Name: New Dialogue Script
+  m_Name: Shopkeeper Script
   m_EditorClassIdentifier: 
-  script: []
+  lines:
+  - {fileID: 11400000, guid: 8bb6ff6f680ca734caf430e8dbb1011b, type: 2}
+  - {fileID: 11400000, guid: 2c9c24c1f7748684ab51d3a1b738b9b3, type: 2}
+  - {fileID: 11400000, guid: 0f7cca6d45b80194eb4ec11fb7b49747, type: 2}

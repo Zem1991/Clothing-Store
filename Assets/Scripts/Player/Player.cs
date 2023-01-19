@@ -12,19 +12,24 @@ public class Player : MonoBehaviour
     public int Money { get => money; private set => money = value; }
 
     [Header("Runtime")]
+    [SerializeField] private GameState gameState;
     [SerializeField] private UI ui;
     [SerializeField] private new Camera camera;
     [SerializeField] private PlayerCharacter playerCharacter;
     [SerializeField] private InteractableHighlight interactableHighlight;
     [SerializeField] private InteractablePicker interactablePicker;
+    [SerializeField] private DialogueScript dialogueScript;
+    public GameState GameState { get => gameState; private set => gameState = value; }
     public UI UI { get => ui; private set => ui = value; }
     public Camera Camera { get => camera; private set => camera = value; }
     public PlayerCharacter PlayerCharacter { get => playerCharacter; private set => playerCharacter = value; }
     public InteractableHighlight InteractableHighlight { get => interactableHighlight; set => interactableHighlight = value; }
     public InteractablePicker InteractablePicker { get => interactablePicker; private set => interactablePicker = value; }
+    public DialogueScript DialogueScript { get => dialogueScript; private set => dialogueScript = value; }
 
     private void Awake()
     {
+        GameState = GameState.NORMAL;
         UI = FindObjectOfType<UI>();
         Camera = FindObjectOfType<Camera>();
         PlayerCharacter = FindObjectOfType<PlayerCharacter>();
@@ -48,7 +53,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        InteractablePicker = new(PlayerCharacter, InteractableHighlight);
+        InteractablePicker = new(this);
         InteractablePicker.Pick();
 
         InputUpdater inputUpdater = new(this);
@@ -64,11 +69,6 @@ public class Player : MonoBehaviour
         inputUpdater.LateUpdate();
     }
 
-    //private PlayerUpdateTargets GetPlayerUpdateTargets()
-    //{
-    //    return new(this, camera, playerCharacter);
-    //}
-
     public void AddMoney(int amount)
     {
         if (amount <= 0) return;
@@ -80,4 +80,19 @@ public class Player : MonoBehaviour
         if (amount <= 0) return;
         money -= amount;
     }
+
+    public void ClearDialogueScript()
+    {
+        DialogueScript = null;
+    }
+
+    public bool StartDialogueScript(DialogueScriptData dialogueScriptData)
+    {
+        if (DialogueScript != null) return false;
+        DialogueScript = new(this, dialogueScriptData);
+        DialogueScript.StartDialogue();
+        return true;
+    }
+
+    public void SetGameState(GameState gameState) => GameState = gameState;
 }

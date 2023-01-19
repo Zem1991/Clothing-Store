@@ -23,23 +23,19 @@ public class UI : MonoBehaviour
         Refresh(null);
     }
 
-    //public void Refresh(PlayerUpdateTargets playerUpdateTargets)
-    //{
-    //    PlayerCharacter playerCharacter = playerUpdateTargets.playerCharacter;
-    //    hud.Refresh(playerCharacter);
-    //}
-
     public void Refresh(Player player)
     {
         hud.Refresh(player);
         inventory.Refresh(inventoryActive ? player.PlayerCharacter.GetInventory() : null);
         sellFromBackpack.Refresh(sellFromBackpackActive ? player.PlayerCharacter.GetInventory() : null);
-        //dialogue.Refresh(player);
+        dialogue.Refresh(player?.DialogueScript);
     }
 
     public void ToggleInventory(Player player)
     {
         inventoryActive = !inventoryActive;
+        if (inventoryActive) player.SetGameState(GameState.INVENTORY);
+        else player.SetGameState(GameState.NORMAL);
         ManualUpdateInventory(player);
     }
 
@@ -51,6 +47,8 @@ public class UI : MonoBehaviour
     public void ToggleSellFromBackpack(Player player)
     {
         sellFromBackpackActive = !sellFromBackpackActive;
+        if (sellFromBackpackActive) player.SetGameState(GameState.SELL_ITEMS);
+        else player.SetGameState(GameState.NORMAL);
         ManualUpdateSellFromBackpack(player);
     }
 
@@ -59,9 +57,10 @@ public class UI : MonoBehaviour
         if (sellFromBackpackActive) sellFromBackpack.ManualUpdate(player.PlayerCharacter.GetInventory());
     }
 
-    public void Cancel()
+    public void CancelToggles(Player player)
     {
         inventoryActive = false;
         sellFromBackpackActive = false;
+        player.SetGameState(GameState.NORMAL);
     }
 }

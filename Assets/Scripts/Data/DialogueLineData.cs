@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Project Data/Dialogue/Line")]
-public class DialogueLine : ScriptableObject
+public class DialogueLineData : ScriptableObject
 {
     [SerializeField] private CharacterData character;
-    [SerializeField] private string text;
+    [SerializeField][TextArea] private string text;
     public CharacterData Character { get => character; private set => character = value; }
     public string Text { get => text; private set => text = value; }
 }

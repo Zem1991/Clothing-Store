@@ -558,6 +558,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 0}
-  nameText: {fileID: 0}
-  messageText: {fileID: 0}
+  nameText: {fileID: 8063360204400939203}
+  messageText: {fileID: 8063360203985964647}
   prompt: {fileID: 0}
