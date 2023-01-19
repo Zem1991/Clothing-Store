@@ -6,12 +6,16 @@ using UnityEngine;
 public abstract class ItemData : ScriptableObject
 {
     [Header("Identification")]
-    [SerializeField] public string idName = "Unnamed";
-    [SerializeField] public Sprite idIcon;
+    [SerializeField] private string idName = "Unnamed";
+    [SerializeField] private Sprite idIcon;
+    public string IdName { get => idName; private set => idName = value; }
+    public Sprite IdIcon { get => idIcon; private set => idIcon = value; }
 
     [Header("Settings")]
-    [SerializeField][Min(0)] public int price;
-    [SerializeField] public string description;
+    [SerializeField][Min(0)] private int price;
+    [SerializeField] private string description;
+    public int Price { get => price; private set => price = value; }
+    public string Description { get => description; private set => description = value; }
 
     //[Header("Art")]
     //[SerializeField] public GameObject model;

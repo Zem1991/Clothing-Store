@@ -50,6 +50,9 @@ TagManager:
   - name: Character
     uniqueID: 2714504637
     locked: 0
+  - name: Highlight
+    uniqueID: 2747932243
+    locked: 0
   - name: Upper Tile
     uniqueID: 3482345801
     locked: 0

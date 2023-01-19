@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [System.Serializable]
 public class InventorySlot
@@ -18,8 +20,8 @@ public class InventorySlot
 
     public bool IsEmpty()
     {
-        return current == null;
-        //return current?.itemData == null;
+        //return current == null;
+        return current?.itemData == null;
     }
 
     public Item Get()
@@ -27,15 +29,21 @@ public class InventorySlot
         return current;
     }
 
+    public void Set(Item item)
+    {
+        current = item;
+        InvokeOnChange();
+    }
+
     public void Clear()
     {
-        current = null;
+        Set(null);
     }
 
     public Item Eject()
     {
         Item previous = current;
-        current = null;
+        Clear();
         return previous;
     }
 
@@ -43,7 +51,7 @@ public class InventorySlot
     {
         if (!IsEmpty()) return false;
         if (!itemType.IsCompatibleWith(item)) return false;
-        current = item;
+        Set(item);
         return true;
     }
 
@@ -52,7 +60,7 @@ public class InventorySlot
         previous = null;
         if (!itemType.IsCompatibleWith(item)) return false;
         previous = current;
-        current = item;
+        Set(item);
         return true;
     }
 
@@ -62,7 +70,9 @@ public class InventorySlot
         if (item == null) return false;
         if (item != current) return false;
         previous = current;
-        current = null;
+        Clear();
         return true;
     }
+
+    private void InvokeOnChange() => inventory.InvokeOnChange();
 }

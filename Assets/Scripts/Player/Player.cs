@@ -15,10 +15,12 @@ public class Player : MonoBehaviour
     [SerializeField] private UI ui;
     [SerializeField] private new Camera camera;
     [SerializeField] private PlayerCharacter playerCharacter;
+    [SerializeField] private InteractableHighlight interactableHighlight;
     [SerializeField] private InteractablePicker interactablePicker;
     public UI UI { get => ui; private set => ui = value; }
     public Camera Camera { get => camera; private set => camera = value; }
     public PlayerCharacter PlayerCharacter { get => playerCharacter; private set => playerCharacter = value; }
+    public InteractableHighlight InteractableHighlight { get => interactableHighlight; set => interactableHighlight = value; }
     public InteractablePicker InteractablePicker { get => interactablePicker; private set => interactablePicker = value; }
 
     private void Awake()
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
         UI = FindObjectOfType<UI>();
         Camera = FindObjectOfType<Camera>();
         PlayerCharacter = FindObjectOfType<PlayerCharacter>();
+        InteractableHighlight = GetComponentInChildren<InteractableHighlight>();
         InteractablePicker = null;
     }
 
@@ -45,7 +48,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        InteractablePicker = new(PlayerCharacter);
+        InteractablePicker = new(PlayerCharacter, InteractableHighlight);
         InteractablePicker.Pick();
 
         InputUpdater inputUpdater = new(this);

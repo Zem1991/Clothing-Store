@@ -23,8 +23,8 @@ public class BackpackInventorySlotUI : InventorySlotUI
         base.Refresh(thing);
         Item item = thing.Get();
         bool hasItem = item != null;
-        itemName.text = hasItem ? item.itemData.idName : "<empty>";
-        itemPrice.text = hasItem ? $"${item.itemData.price}" : null;
+        itemName.text = hasItem ? item.itemData.IdName : "<empty>";
+        itemPrice.text = hasItem ? $"${item.itemData.Price}" : null;
     }
 
     protected override void PointerClick()

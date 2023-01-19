@@ -34,7 +34,7 @@ public class UI : MonoBehaviour
         hud.Refresh(player);
         inventory.Refresh(inventoryActive ? player.PlayerCharacter.GetInventory() : null);
         sellFromBackpack.Refresh(sellFromBackpackActive ? player.PlayerCharacter.GetInventory() : null);
-        dialogue.Refresh(player);
+        //dialogue.Refresh(player);
     }
 
     public void ToggleInventory(Player player)

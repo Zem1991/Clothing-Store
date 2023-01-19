@@ -9,7 +9,7 @@ public class Mannequin : MonoBehaviour, Interactable
 
     public string GetInteractionText()
     {
-        return $"Buy {item.idName} for ${item.price}";
+        return $"Buy {item.IdName} for ${item.Price}";
     }
 
     public Vector3 GetInteractionPosition()

@@ -33,7 +33,7 @@ public abstract class InventorySlotUI : GenericUI<InventorySlot>, IPointerEnterH
         inventorySlot = thing;
         Item item = thing.Get();
         bool hasItem = item != null;
-        iconFront.sprite = item?.itemData.idIcon;
+        iconFront.sprite = item?.itemData.IdIcon;
         iconFront.enabled = hasItem;
     }
 

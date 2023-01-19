@@ -18,7 +18,7 @@ public class MoneyTransactionHandler
         bool added = inventory.Add(item);
         if (added)
         {
-            player.SubtractMoney(itemData.price);
+            player.SubtractMoney(itemData.Price);
         }
         return added;
     }
@@ -27,7 +27,7 @@ public class MoneyTransactionHandler
     {
         Item item = inventorySlot.Eject();
         if (item == null) return false;
-        player.AddMoney(item.itemData.price);
+        player.AddMoney(item.itemData.Price);
         return true;
     }
 }

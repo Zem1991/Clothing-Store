@@ -29,7 +29,7 @@ public class ItemDescriptionUI : GenericUI<InventorySlot>
         }
         else
         {
-            itemDescription.text = item.itemData.description;
+            itemDescription.text = item.itemData.Description;
             itemSpawnDateTime.text = item.spawnDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
             ToString();
         }

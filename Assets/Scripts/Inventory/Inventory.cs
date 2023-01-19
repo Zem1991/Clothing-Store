@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class Inventory
 {
     private Action OnChange;
@@ -74,9 +74,10 @@ public class Inventory
         Backpack = newBackpack;
     }
 
-    public void SetDisplay(InventorySlot inventorySlot)
+    public void InvokeOnChange()
     {
-        Display = inventorySlot;
+        TrimBackpack();
+        OnChange?.Invoke();
     }
 
     public void ClearDisplay(InventorySlot inventorySlot)
@@ -85,7 +86,6 @@ public class Inventory
     }
 
     public void SetOwner(Player player) => Player = player;
-
+    public void SetDisplay(InventorySlot inventorySlot) => Display = inventorySlot;
     public void SetOnChange(Action action) => OnChange = action;
-    private void InvokeOnChange() => OnChange?.Invoke();
 }
