@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SoundEffectPlayer
 {
-    private AudioSource sfxSource;
     private AudioClip audioClip;
+    private AudioSourceOneShot source;
 
     //public SoundEffectPlayer(AudioSource sfxSource, AudioClip audioClip)
     public SoundEffectPlayer(AudioClip audioClip)
@@ -14,19 +14,21 @@ public class SoundEffectPlayer
         this.audioClip = audioClip;
     }
 
-    public void Play()
+    public AudioSourceOneShot Play()
     {
-        sfxSource = Object.FindObjectOfType<AudioSource>();
-        sfxSource.PlayOneShot(audioClip);
+        AudioSourceOneShot prefab = AllPrefabs.Instance.AudioSourceOneShot;
+        source = Object.Instantiate(prefab);
+        source.Play(audioClip);
+        return source;
     }
 
     public void Stop()
     {
-        sfxSource.Stop();
+        source.Stop();
     }
 
     public bool IsPlaying()
     {
-        return sfxSource.isPlaying;
+        return source != null && source.IsPlaying();
     }
 }

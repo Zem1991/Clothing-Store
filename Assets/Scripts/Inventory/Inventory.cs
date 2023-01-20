@@ -83,7 +83,9 @@ public class Inventory
         TrimBackpack();
         CharacterAnimator.InventoryChange(this);
         OnChange?.Invoke();
-        new SystemSoundEffectPlayer().ConfirmAction();
+
+        ////Sometimes plays several times on the same singular change.
+        //new SystemSoundEffectPlayer().ConfirmAction();
     }
 
     public void ClearDisplay(InventorySlot inventorySlot)
