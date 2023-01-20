@@ -16,3 +16,4 @@ MonoBehaviour:
   idIcon: {fileID: 1261207189, guid: 4807d3dd184497a4993da0e9b4297c4a, type: 3}
   price: 8
   description: For hardcore jeans users.
+  animatorController: {fileID: 9100000, guid: 8c17f0627b8054d418292a5188019870, type: 2}

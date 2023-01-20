@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    protected Animator animator;
+    protected List<Animator> animators;
     protected new Rigidbody2D rigidbody2D;
 
     [Header("Character Data")]
@@ -16,9 +17,9 @@ public class Character : MonoBehaviour
 
     protected virtual void Awake()
     {
-        animator = GetComponent<Animator>();
+        animators = GetComponentsInChildren<Animator>().ToList();
         rigidbody2D = GetComponent<Rigidbody2D>();
-        characterAnimator = new(this, animator);
+        characterAnimator = new(this, animators);
         characterMovement = new(this, rigidbody2D);
     }
 

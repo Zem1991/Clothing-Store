@@ -10,7 +10,7 @@ public class PlayerCharacter : Character
     protected override void Awake()
     {
         base.Awake();
-        inventory = new(this);
+        inventory = new(this, characterAnimator);
     }
 
     public Inventory GetInventory() => inventory.GetInventory();

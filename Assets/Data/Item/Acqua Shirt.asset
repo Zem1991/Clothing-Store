@@ -16,3 +16,4 @@ MonoBehaviour:
   idIcon: {fileID: -1227271547, guid: 4807d3dd184497a4993da0e9b4297c4a, type: 3}
   price: 5
   description: Camouflage for intense pool action.
+  animatorController: {fileID: 9100000, guid: bfcec28da4cd666419664958c5a041bd, type: 2}

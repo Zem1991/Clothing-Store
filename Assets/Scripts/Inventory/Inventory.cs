@@ -23,18 +23,22 @@ public class Inventory
     public List<InventorySlot> Backpack { get => backpack; private set => backpack = value; }
 
     [Header("Runtime")]
+    private CharacterAnimator characterAnimator;
     private Player player;
     private InventorySlot display;
+    public CharacterAnimator CharacterAnimator { get => characterAnimator; private set => characterAnimator = value; }
     public Player Player { get => player; private set => player = value; }
     public InventorySlot Display { get => display; private set => display = value; }
 
-    public Inventory()
+    public Inventory(CharacterAnimator characterAnimator)
 	{
         Head = new(this, ItemType.HEAD_CLOTHING);
         Torso = new(this, ItemType.TORSO_CLOTHING);
         Legs = new(this, ItemType.LEGS_CLOTHING);
         Feet = new(this, ItemType.FEET_CLOTHING);
         Backpack = new();
+
+        CharacterAnimator = characterAnimator;
         Player = null;
         Display = null;
     }
@@ -77,6 +81,7 @@ public class Inventory
     public void InvokeOnChange()
     {
         TrimBackpack();
+        CharacterAnimator.InventoryChange(this);
         OnChange?.Invoke();
         new SystemSoundEffectPlayer().ConfirmAction();
     }

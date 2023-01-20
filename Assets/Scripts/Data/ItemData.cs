@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 //[CreateAssetMenu(menuName = "Project Data/Item/Miscellaneous")]
@@ -17,8 +18,9 @@ public abstract class ItemData : ScriptableObject
     public int Price { get => price; private set => price = value; }
     public string Description { get => description; private set => description = value; }
 
-    //[Header("Art")]
-    //[SerializeField] public GameObject model;
+    [Header("Art")]
+    [SerializeField] private AnimatorController animatorController;
+    public AnimatorController AnimatorController { get => animatorController; private set => animatorController = value; }
 
     public abstract ItemType GetItemType();
 }

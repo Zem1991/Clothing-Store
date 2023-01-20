@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84253394afaff5746adae4bb8997ddec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterData: {fileID: 0}
+  characterData: {fileID: 11400000, guid: ffbbf2e3f8010be4d9ab8b490d25b9eb, type: 2}
   characterMovement:
     moveSpeed: 0
   dialogueScriptData: {fileID: 11400000, guid: 053a80050e6d5d34cbde522de6c44d7c, type: 2}

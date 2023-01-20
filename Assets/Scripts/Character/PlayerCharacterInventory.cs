@@ -7,11 +7,10 @@ public class PlayerCharacterInventory : CharacterComponent
 {
     [SerializeField] private Inventory inventory;
 
-    public PlayerCharacterInventory(Character character) : base(character)
+    public PlayerCharacterInventory(Character character, CharacterAnimator characterAnimator) : base(character)
     {
-        inventory = new();
+        inventory = new(characterAnimator);
     }
 
     public Inventory GetInventory() => inventory;
-    //public bool Add(Item item) => inventory.Add(item);
 }
