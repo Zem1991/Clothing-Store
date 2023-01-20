@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 [System.Serializable]
@@ -36,17 +35,17 @@ public class CharacterAnimator : CharacterComponent
         ChangeLegs(legsClothing?.itemData.ItemDataMonobehavior.AnimatorController);
     }
 
-    public void ChangeTorso(AnimatorController animatorController)
+    public void ChangeTorso(RuntimeAnimatorController animatorController)
     {
         Change(1, animatorController);
     }
 
-    public void ChangeLegs(AnimatorController animatorController)
+    public void ChangeLegs(RuntimeAnimatorController animatorController)
     {
         Change(2, animatorController);
     }
 
-    private void Change(int index, AnimatorController animatorController)
+    private void Change(int index, RuntimeAnimatorController animatorController)
     {
         if (index >= animators.Count)
         {
