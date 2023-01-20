@@ -9,5 +9,15 @@ Also I have to say that my previous, personal and ancient works on RPG Maker 200
 Regarding audio, I sampled my own voice as the voice of the singular NPC - the Shopkeeper. All other sound effects were from freesound.org. The music track used was taken from zapsplat.com.
 
 I wish I could have added more actual content to the game. Initially I planned around 4 to 8 pieces of clothing for each type - head, torso, legs and feet. However, I never had done before an animation system where your character and each individual piece of equipment/clothing animate together.
-When I realised how much work it could become, for a thing that I could very well have to replace in the last second, for a project with a set deadline, I settled for only 2 items total. At least it's possible to see them animate together with the caracter.
+When I realised how much work it could become, for a thing that I could very well have to replace in the last second, for a project with a set deadline, I settled for only one shirt and one pair of pants only. At least it's possible to see them animate together with the caracter.
 
+Anyway, it was a fun experience, and I did learn some new things from it.
+
+If you wish to test it, I provided a build, compiled with WinRar/7Zip. Instructions:
+* WASD to move around
+* E to interact (must be close to something interactable)
+* I to open/close inventory (there is also a button on the HUD that you can click)
+* ESC to close any window
+* You can exit the game by interacting with the front door or by clicking Exit Game on the HUD.
+
+See ya!
