@@ -53,6 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 0}
+  characterAnimator:
+    animators: []
   characterMovement:
     moveSpeed: 0
   inventory:
@@ -99,7 +101,7 @@ SpriteRenderer:
   m_SortingLayerID: -1580462659
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1332958380, guid: 2f7bac28befc1f1429de5d230d84141f, type: 3}
+  m_Sprite: {fileID: 283719110, guid: fcc1c3ab9a16122409a2bd5d21480892, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,7 +122,7 @@ Animator:
   m_GameObject: {fileID: 41147248649556206}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f29e80bfa6d22b4880ecfb5ac659d3d, type: 2}
+  m_Controller: {fileID: 9100000, guid: af44962a857323c46910bd02db3b8686, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
