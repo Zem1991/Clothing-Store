@@ -19,8 +19,9 @@ public abstract class ItemData : ScriptableObject
     public string Description { get => description; private set => description = value; }
 
     [Header("Art")]
-    [SerializeField] private AnimatorController animatorController;
-    public AnimatorController AnimatorController { get => animatorController; private set => animatorController = value; }
+    public ItemDataMonobehavior ItemDataMonobehavior;
+    //[SerializeField] private AnimatorController animatorController;
+    //public AnimatorController AnimatorController { get => animatorController; private set => animatorController = value; }
 
     public abstract ItemType GetItemType();
 }

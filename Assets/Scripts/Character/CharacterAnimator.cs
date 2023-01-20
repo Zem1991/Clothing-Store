@@ -32,8 +32,8 @@ public class CharacterAnimator : CharacterComponent
     {
         TorsoClothing torsoClothing = inventory.Torso.Get() as TorsoClothing;
         LegsClothing legsClothing = inventory.Legs.Get() as LegsClothing;
-        ChangeTorso(torsoClothing?.itemData.AnimatorController);
-        ChangeLegs(legsClothing?.itemData.AnimatorController);
+        ChangeTorso(torsoClothing?.itemData.ItemDataMonobehavior.AnimatorController);
+        ChangeLegs(legsClothing?.itemData.ItemDataMonobehavior.AnimatorController);
     }
 
     public void ChangeTorso(AnimatorController animatorController)

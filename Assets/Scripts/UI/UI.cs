@@ -24,6 +24,10 @@ public class UI : MonoBehaviour
         inventory = GetComponentInChildren<InventoryUI>();
         sellFromBackpack = GetComponentInChildren<SellFromBackpackUI>();
         dialogue = GetComponentInChildren<DialogueUI>();
+    }
+
+    private void Start()
+    {
         Refresh(null);
     }
 
