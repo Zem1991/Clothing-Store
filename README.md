@@ -1,4 +1,4 @@
-# Clothes Shop (LSW-Test)
+# Clothing Store (formely LSW-Test)
 Oh hello.
 
 I did this project as a job interview/test. The assignement was to create a playable clothes shop within 84~96 hours. It went pretty much like a Game Jam does, which means: crunch time, doing stuff I'm not familiar with and having fun above all else. In the end I got pretty satisfied with the final result, especially because I managed to do everything on time and even threw in two extras - inventory management and a dialogue system.
